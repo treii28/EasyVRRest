@@ -10,6 +10,7 @@ void handleEasyVR(AsyncWebServerRequest *request) {
     // url should be in format: "/easyvr/command"
     const char* command = request->url().substring(8).c_str();
     String json = evRest.handleRequest(command, request);
+    request->send(200, "application/json", json);
 }
 
 // in http setup:
